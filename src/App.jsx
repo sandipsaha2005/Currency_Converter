@@ -3,21 +3,14 @@ import InputBox from './inputBox';
 import  useCurrency  from './hooks/useCurrency';
 
 function App() {
-  const [amount, setAmount] = useState(0);
+  const [amount, setAmount] = useState();
   const [from, setFrom] = useState("usd");
   const [to, setTo] = useState("inr");
   const [convertedAmount, setConvertedAmount] = useState(0);
   const currencyInfo = useCurrency(from);
-  console.log(`api response ${currencyInfo}`);
-  // try {
-  //   let options=Object.keys(currencyInfo);
-  //   console.log(options);
-  // } catch (error) {
-  //   console.log(error)
-    
-  // }
+
   const options = Object.keys(currencyInfo);
-  // let options=['inr','usd','euro']
+
   const swap = () => {
     setFrom(to);
     setTo(from);
@@ -45,9 +38,10 @@ function App() {
                   label="From"
                   amount={amount}
                   currencyOptions={options}
-                  onAmountChange={(amount) => setAmount(amount)}
+                  onAmountChange={(value) => setAmount(value)}
                   selectCurrency={from}
                   onCurrencyChange={(currency) => setFrom(currency)}
+                  
                 />
               </div>
               <div className="relative w-full h-0.5">
