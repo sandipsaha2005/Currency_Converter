@@ -19,7 +19,8 @@ function App() {
   }
 
   const convert = () => {
-    setConvertedAmount(amount * currencyInfo[to]);
+    let conam=Math.floor(amount * currencyInfo[to]);
+    setConvertedAmount(conam);
   }
 
   return (
